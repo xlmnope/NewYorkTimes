@@ -14,10 +14,13 @@ $("#searchButton").on("click", function() {
   throw err;
     });
 
-}
+var results = result.data;
+for (var i=0; i<results.length; i++){
+  var articleDiv = $("<div>");
+  articleDiv.append ($(".searchResults"))  
+}})
 
-//turn JSON into a string
-JSON.stringify(result);
+$("#clearResultsButton").on ("click", function () {
+  $(".param").text("")
+})
 
-//update results section of HTML
-$(".searchResults").
