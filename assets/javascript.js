@@ -9,16 +9,19 @@ $("#searchButton").on("click", function() {
      url: url,
      method: 'GET',
     }).done(function(result) {
-    console.log(result);
+      console.log(result);
+      var results = result.response.docs;
+      for (var i=0; i<results.length; i++){
+        var doc = results[i];
+        var articleDiv = $("<div>").html(doc.web_url);
+        articleDiv.appendTo($(".searchResults")) 
+      }
     }).fail(function(err) {
   throw err;
     });
 
-var results = result.data;
-for (var i=0; i<results.length; i++){
-  var articleDiv = $("<div>");
-  articleDiv.append ($(".searchResults"))  
-}})
+ 
+})
 
 $("#clearResultsButton").on ("click", function () {
   $(".param").text("")
